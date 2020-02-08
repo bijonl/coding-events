@@ -20,22 +20,41 @@ public class EventController {
     private static List<String> events = new ArrayList<>();
 
     @GetMapping
-    public String displayAllEvents(Model model) {
-        model.addAttribute("title", "All Events");
-        model.addAttribute("events", events);
+    public String displayAllEvents(Model model){
+        model.addAttribute("events",events);
         return "events/index";
     }
-
     @GetMapping("create")
-    public String displayCreateEventForm(Model model) {
-        model.addAttribute("title", "Create Event");
+    public String renderCreateEventForm(){
         return "events/create";
     }
 
     @PostMapping("create")
-    public String processCreateEventForm(@RequestParam String eventName) {
+    public String createEvent(@RequestParam String eventName){
         events.add(eventName);
         return "redirect:";
     }
+
+//    private static List<String> events = new ArrayList<>();
+//
+//    @GetMapping
+//    public String displayAllEvents(Model model) {
+//        model.addAttribute("title", "All Events");
+//        model.addAttribute("events", events);
+//        return "events/index";
+//    }
+//
+//    @GetMapping("create")
+//    public String displayCreateEventForm(Model model) {
+//        model.addAttribute("title", "Create Event");
+//        return "events/create";
+//    }
+//
+//    @PostMapping("create")
+//    public String processCreateEventForm(@RequestParam String eventName) {
+//        events.add(eventName);
+//        return "redirect:";
+//    }
+
 
 }
